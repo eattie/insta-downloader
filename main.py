@@ -1,5 +1,5 @@
 import instaloader
-import os
+from instaloader import Profile
 
 def download_instagram_videos(profile_name, download_folder, max_count):
     """Downloads a limited number of the most recent videos from an Instagram profile.
@@ -7,23 +7,21 @@ def download_instagram_videos(profile_name, download_folder, max_count):
 
     L = instaloader.Instaloader()
 
-    L.login(vozzey2,Laugh123!)
+    L.login("alanetai2332","alanetai!")
 
-    posts = L.get_profile(profile_name).get_posts()
+    profile = Profile.from_username(L.context, profile_name)
 
     count = 0
-    for post in posts:
-        if count >= max_count:
+    for post in profile.get_posts():
+        if count > max_count:
             break
-
-        # Download if it's a video
-        if post.is_video:
-            L.download_post(post, target=download_folder)
-            count += 1
+        print(post.caption)
+        count+=1
+        # L.download_post(post, target=profile.username)
 
 if __name__ == "__main__":
-    profile_to_download = "natgeo"
+    profile_to_download = "vozzey"
     download_path = "insta-videos" 
-    max_posts = 5  # Download the 5 most recent videos 
+    max_posts = 1
 
     download_instagram_videos(profile_to_download, download_path, max_posts)
