@@ -5,7 +5,7 @@ def download_instagram_videos(profile_name, download_folder, max_count):
     """Downloads a limited number of the most recent videos from an Instagram profile.
     """
 
-    L = instaloader.Instaloader()
+    L = instaloader.Instaloader(download_video_thumbnails=False, download_comments=False, compress_json=False, save_metadata=False)
 
     L.login("alanetai2332","alanetai!")
 
@@ -13,11 +13,11 @@ def download_instagram_videos(profile_name, download_folder, max_count):
 
     count = 0
     for post in profile.get_posts():
-        if count > max_count:
+        if count >= max_count:
             break
         print(post.caption)
         count+=1
-        # L.download_post(post, target=profile.username)
+        L.download_post(post, target=profile.username)
 
 if __name__ == "__main__":
     profile_to_download = "vozzey"
