@@ -7,7 +7,7 @@ def download_instagram_videos(profile_name, download_folder, max_count):
 
     L = instaloader.Instaloader(download_video_thumbnails=False, download_comments=False, compress_json=False, save_metadata=False)
 
-    L.login("alanetai2332","alanetai!")
+    L.login("input user","input pass")
 
     profile = Profile.from_username(L.context, profile_name)
 
